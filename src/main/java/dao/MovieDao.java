@@ -71,6 +71,10 @@ public class MovieDao implements Dao<Movie> {
         return entity;
     }
 
+    /**
+     * update one row in DB
+     * @param entity
+     */
     @Override
     public void update(Movie entity) {
         Session session = HibernateUtils.getSessionFactory().openSession();
@@ -88,6 +92,10 @@ public class MovieDao implements Dao<Movie> {
         }
     }
 
+    /**
+     * delete one row in DB
+     * @param entity
+     */
     @Override
     public void delete(Movie entity) {
         Session session = HibernateUtils.getSessionFactory().openSession();
