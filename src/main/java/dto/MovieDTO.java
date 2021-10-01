@@ -1,2 +1,4 @@
-package dto;public class MovieDTO {
+package dto;
+public class MovieDTO {
+
 }
