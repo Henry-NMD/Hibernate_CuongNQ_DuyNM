@@ -1,0 +1,12 @@
+
+V	java:S125"<This block of commented-out lines of code should be removed.(œËôÔÿÿÿÿÿ
+D
+java:S1172".Remove this unused method parameter "typeDTO".(¡ºññ
+Q	java:S125"<This block of commented-out lines of code should be removed.(²§³
+V	java:S125"<This block of commented-out lines of code should be removed.(àÕ•³ÿÿÿÿÿ
+S	java:S106$"9Replace this use of System.out or System.err by a logger.(ï½²ÿÿÿÿÿ
+>	java:S108&")Either remove or fill this block of code.(å¥ž‡
+E
+java:S1068"/Remove this unused "convertType" private field.(Â…ßß
+Y
+java:S1155"">Use isEmpty() to check whether the collection is empty or not.(…û¸Îþÿÿÿÿ
