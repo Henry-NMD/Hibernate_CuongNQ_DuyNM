@@ -1,6 +1,7 @@
 package dto;
 
-import java.sql.Date;
+
+import java.util.Date;
 
 public class MovieDTO {
 
@@ -135,5 +136,24 @@ public class MovieDTO {
 
     public void setSmallImage(String smallImage) {
         this.smallImage = smallImage;
+    }
+
+    @Override
+    public String toString() {
+        return "MovieDTO{" +
+                "movieId='" + movieId + '\'' +
+                ", actor='" + actor + '\'' +
+                ", content='" + content + '\'' +
+                ", director='" + director + '\'' +
+                ", duration=" + duration +
+                ", fromDate=" + fromDate +
+                ", toDate=" + toDate +
+                ", movieProductionCompany='" + movieProductionCompany + '\'' +
+                ", version='" + version + '\'' +
+                ", movieNameEn='" + movieNameEn + '\'' +
+                ", movieNameVn='" + movieNameVn + '\'' +
+                ", largeImage='" + largeImage + '\'' +
+                ", smallImage='" + smallImage + '\'' +
+                '}';
     }
 }

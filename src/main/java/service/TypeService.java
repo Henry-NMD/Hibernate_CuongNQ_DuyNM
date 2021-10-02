@@ -2,6 +2,7 @@ package service;
 
 import convert.ConvertType;
 import dao.TypeDao;
+import dto.MovieDTO;
 import dto.TypeDTO;
 import entities.Type;
 
@@ -9,10 +10,6 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-//import jakarta.validation.ConstraintViolation;
-//import jakarta.validation.Validation;
-//import jakarta.validation.Validator;
-//import jakarta.validation.ValidatorFactory;
 import java.util.Date;
 import java.util.Set;
 
@@ -22,12 +19,12 @@ public class TypeService {
     private TypeDao typeDao = new TypeDao();
 
     /**
-     * validator typeDTO and call typeDao
+     * validator type object and call typeDao
      *
      * @param typeDTO
      * @return 1 if save success , otherwise 0
      */
-    public int saveTypeService(TypeDTO typeDTO) {
+    public int saveTypeService(TypeDTO typeDTO) throws Exception{
         int statusSaveType = 0;
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
@@ -44,5 +41,33 @@ public class TypeService {
             statusSaveType = typeDao.save(type);
         }
         return statusSaveType;
+    }
+
+
+    /**
+     * validator type object and check if status equal u then call update , otherwise class delete
+     *
+     * @param typeDTO
+     * @param status
+     * @return status change type
+     */
+    public int changeMovie(TypeDTO typeDTO , String status) {
+        int statusChange = 0;
+        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+        Validator validator = factory.getValidator();
+        type = convertType.convertToModel(typeDTO);
+        Set<ConstraintViolation<Type>> constraintViolations = validator.validate(type);
+        if (constraintViolations.size() > 0) {
+            for (ConstraintViolation<Type> violation : constraintViolations) {
+                System.out.println(violation.getMessage());
+            }
+        } else {
+            if ("U".equals(status)) {
+                typeDao.update(type);
+            } else {
+                typeDao.delete(type);
+            }
+        }
+        return statusChange;
     }
 }

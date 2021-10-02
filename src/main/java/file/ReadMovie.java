@@ -1,16 +1,20 @@
 package file;
 
 import dto.MovieDTO;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import dto.TypeDTO;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ReadMovie {
     public static final int COLUMN_INDEX_MOVIE_ID = 0;
@@ -27,11 +31,7 @@ public class ReadMovie {
     public static final int COLUMN_INDEX_LARGE_IMAGE = 11;
     public static final int COLUMN_INDEX_SMALL_IMAGE = 12;
 
-    /**
-     *
-     * @return
-     */
-    public static MovieDTO readExcel() throw IOException {
+    public static MovieDTO readExcel() throws IOException {
         String excelFilePath = "Data.xlsx";
         InputStream inputStream = new FileInputStream(new File(excelFilePath));
         Workbook workbook = getWorkbook(inputStream, excelFilePath);
@@ -75,10 +75,13 @@ public class ReadMovie {
                         movieDTO.setDuration(new BigDecimal((double) cellValue).intValue());
                         break;
                     case COLUMN_INDEX_FROM_DATE:
-                        movieDTO.setFromDate();
+                        Date javaDate= DateUtil.getJavaDate((double) getCellValue(cell));
+                        movieDTO.setFromDate(javaDate);
+                        System.out.println(getCellValue(cell));
                         break;
                     case COLUMN_INDEX_TO_DATE:
-                        movieDTO.setToDate();
+                        Date javaDate1= DateUtil.getJavaDate((double) getCellValue(cell));
+                        movieDTO.setToDate(javaDate1);
                         break;
 
                     case COLUMN_INDEX_MOVIE_PRODUCTION_COMPANY:
@@ -99,6 +102,7 @@ public class ReadMovie {
                     case COLUMN_INDEX_SMALL_IMAGE:
                         movieDTO.setSmallImage(String.valueOf(getCellValue(cell)));
                         break;
+
                     default:
                 }
 
@@ -110,6 +114,7 @@ public class ReadMovie {
 
         return movieDTO;
     }
+
 
     private static Workbook getWorkbook(InputStream inputStream, String excelFilePath) throws IOException {
         Workbook workbook = null;

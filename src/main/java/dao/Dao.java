@@ -9,6 +9,30 @@ import java.util.List;
 public interface Dao<T> {
 
     /**
+     *  save an object to db
+     *
+     * @param t
+     * @return 1 if success , otherwise 0
+     */
+    default int save(T t) {
+        int statusSaveObject = 0;
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            statusSaveObject = (int) session.save(t);
+            tx.commit();
+        } catch (Exception e) {
+            if (session != null) {
+                tx.rollback();
+            }
+        } finally {
+            session.close();
+        }
+        return statusSaveObject;
+    }
+
+    /**
      * get all object from DB
      *
      * @return
@@ -38,28 +62,4 @@ public interface Dao<T> {
      */
     void delete(T entity);
 
-
-    /**
-     *  save an object to db
-     *
-     * @param t
-     * @return 1 if success , otherwise 0
-     */
-    default int save(T t) {
-        int statusSaveObject = 0;
-        Session session = HibernateUtils.getSessionFactory().openSession();
-        Transaction tx = null;
-        try {
-            tx = session.beginTransaction();
-            statusSaveObject = (int) session.save(t);
-            tx.commit();
-        } catch (Exception e) {
-            if (session != null) {
-                tx.rollback();
-            }
-        } finally {
-            session.close();
-        }
-        return statusSaveObject;
-    }
 }

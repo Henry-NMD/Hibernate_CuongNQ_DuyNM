@@ -1,6 +1,8 @@
 package main;
 
+import dto.MovieDTO;
 import dto.TypeDTO;
+import file.ReadMovie;
 import file.ReadType;
 import service.TypeService;
 import utils.HibernateUtils;
@@ -12,8 +14,8 @@ public class MainApplication {
 		System.out.println("Running hibernate config");
 //		HibernateUtils.getSessionFactory();
 		try {
-			TypeDTO typeDTO = ReadType.readExcel();
-			int a = typeService.saveTypeService(typeDTO);
+			MovieDTO movieDTO = ReadMovie.readExcel();
+			System.out.println(movieDTO.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
