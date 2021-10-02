@@ -32,7 +32,7 @@ public class Type extends BaseEntity {
 	}
 
 	public int getTypeId() {
-		return typeId;
+		return this.typeId;
 	}
 
 	public void setTypeId(int typeId) {
