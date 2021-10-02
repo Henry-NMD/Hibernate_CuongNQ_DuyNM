@@ -27,6 +27,10 @@ public class ReadMovie {
     public static final int COLUMN_INDEX_LARGE_IMAGE = 11;
     public static final int COLUMN_INDEX_SMALL_IMAGE = 12;
 
+    /**
+     *
+     * @return
+     */
     public static MovieDTO readExcel() throw IOException {
         String excelFilePath = "Data.xlsx";
         InputStream inputStream = new FileInputStream(new File(excelFilePath));

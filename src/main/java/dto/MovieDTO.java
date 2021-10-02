@@ -4,6 +4,9 @@ import java.sql.Date;
 
 public class MovieDTO {
 
+    /**
+     *
+     */
     private String movieId;
 
     private String actor;
