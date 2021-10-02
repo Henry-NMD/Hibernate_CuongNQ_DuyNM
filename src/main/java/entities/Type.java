@@ -2,6 +2,7 @@ package entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import java.util.List;
 public class Type extends BaseEntity {
 	
 	@Id
+	@NotNull
 	@Column(name = "type_id", unique = true)
 	private int typeId;
 
@@ -21,7 +23,7 @@ public class Type extends BaseEntity {
 	@NotBlank(message = "Please enter type description")
 	@Column(name = "type_description", length = 255, nullable = false)
 	private String typeDescription;
-	
+
 	@OneToMany(mappedBy = "primaryKey.type")
 	private List<MovieType> mtMovieTypes;
 	

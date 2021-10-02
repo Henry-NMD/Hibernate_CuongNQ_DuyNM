@@ -1,16 +1,23 @@
 package entities;
 
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
 
+@MappedSuperclass
 public class BaseEntity {
+
+	@Column (name = "save_date")
 	@Temporal(TemporalType.DATE)
 	private Date createdDate;
-	
+
+	@Column(name = "update_name")
 	@Temporal(TemporalType.DATE)
 	private Date updateDate;
-	
+
+	@Column(name = "active")
 	private Boolean isActive; // soft delete
 
 	public Date getCreatedDate() {
