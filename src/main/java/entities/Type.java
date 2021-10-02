@@ -11,7 +11,6 @@ import java.util.List;
 public class Type extends BaseEntity {
 	
 	@Id
-	@NotNull
 	@Column(name = "type_id", unique = true)
 	private int typeId;
 

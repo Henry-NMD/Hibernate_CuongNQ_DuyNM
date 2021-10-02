@@ -123,21 +123,19 @@ public class TypeDao implements Dao<Type> {
      * @return entity
      * @throws NotFoundException
      */
-    public Type findOne(long id) throws NotFoundException {
+    public Type findOne(int id) throws NotFoundException {
         Session session = HibernateUtils.getSessionFactory().openSession();
         Transaction tx = null;
         Type entity = null;
         try {
             tx = session.beginTransaction();
-            CriteriaBuilder builder = session.getCriteriaBuilder();
-            CriteriaQuery<Type> query = builder.createQuery(Type.class);
-            Root<Type> entityRoot = query.from(Type.class);
-            Predicate cond = builder.equal(entityRoot.get("type_id"), id);
-            query.select(entityRoot).where(cond);
+            CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+            CriteriaQuery<Type> query = criteriaBuilder.createQuery(Type.class);
+            Root<Type> root = query.from(Type.class);
+            Predicate predicate = criteriaBuilder.equal(root.get("roomId"), id);
+            query.select(root).where(predicate);
             TypedQuery<Type> typedQuery = session.createQuery(query);
-            List<Type> entities = typedQuery.getResultList();
-            entity = entities.get(0);
-            return entity;
+            entity = typedQuery.getSingleResult();
         }catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();

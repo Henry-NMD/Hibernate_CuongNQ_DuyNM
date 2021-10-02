@@ -6,6 +6,7 @@ import service.TypeService;
 import utils.HibernateUtils;
 import utils.Contants;
 
+import java.util.Date;
 import java.util.Scanner;
 
 public class MainApplication {
@@ -22,7 +23,9 @@ public class MainApplication {
                 case Contants.SAVE_TYPE: {
                     String statusSave;
                     try {
+                        Date saveDate = new Date();
                         typeDTO = ReadType.readExcel();
+                        typeDTO.setCreatedDate(saveDate);
                         statusSave = typeService.saveTypeService(typeDTO);
                         System.out.println(statusSave);
                     } catch (Exception e) {
@@ -34,7 +37,9 @@ public class MainApplication {
                     String statusUpdate;
                     String update = "U";
                     try {
+                        Date updateDate = new Date();
                         typeDTO = ReadType.readExcel();
+                        typeDTO.setUpdateDate(updateDate);
                         typeService.changeType(typeDTO, update);
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
@@ -45,8 +50,10 @@ public class MainApplication {
                     String statusDelete;
                     String delete = "D";
                     try {
+                        Date deleteDate = new Date();
                         typeDTO = ReadType.readExcel();
                         typeDTO.setIsActive("N");
+                        typeDTO.setUpdateDate(deleteDate);
                         typeService.changeType(typeDTO, delete);
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
@@ -54,7 +61,7 @@ public class MainApplication {
                     break;
                 }
                 default:
-                    System.out.println("unknow: " + chose);
+                    System.out.println("what do you means? " + chose);
             }
             menu();
         }

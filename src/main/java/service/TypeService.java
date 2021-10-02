@@ -5,6 +5,8 @@ import dao.TypeDao;
 import dto.MovieDTO;
 import dto.TypeDTO;
 import entities.Type;
+import exception.DuplicateException;
+import javassist.NotFoundException;
 import utils.Contants;
 
 import javax.validation.ConstraintViolation;
@@ -12,6 +14,7 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 public class TypeService {
@@ -25,7 +28,7 @@ public class TypeService {
      * @param typeDTO
      * @return 1 if save success , otherwise 0
      */
-    public String saveTypeService(TypeDTO typeDTO) throws Exception{
+    public String saveTypeService(TypeDTO typeDTO) throws Exception {
         int statusSaveType = 0;
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
@@ -41,6 +44,7 @@ public class TypeService {
             type.setIsActive("Y");
             statusSaveType = typeDao.save(type);
         }
+
         if (statusSaveType == 1) {
             return Contants.SUCCESS;
         } else {
@@ -56,7 +60,7 @@ public class TypeService {
      * @param status
      * @return status change type
      */
-    public int changeType(TypeDTO typeDTO , String status) {
+    public int changeType(TypeDTO typeDTO, String status) {
         int statusChange = 0;
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
@@ -74,5 +78,22 @@ public class TypeService {
             }
         }
         return statusChange;
+    }
+
+
+    /**
+     * check duplicate type object
+     *
+     * @param id
+     * @return 1 if duplicate id
+     * @throws NotFoundException
+     */
+    private int checkDuplicate(int id) throws NotFoundException {
+        Type type = typeDao.findOne(id);
+        if (type == null) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
 }
