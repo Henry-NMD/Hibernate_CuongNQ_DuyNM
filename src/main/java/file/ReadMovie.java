@@ -1,2 +1,3 @@
-package file;public class ReadMovie {
+package file;
+public class ReadMovie {
 }

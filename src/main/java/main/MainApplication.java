@@ -10,7 +10,7 @@ public class MainApplication {
 	public static void main(String[] args) {
 		TypeService typeService = new TypeService();
 		System.out.println("Running hibernate config");
-		HibernateUtils.getSessionFactory();
+//		HibernateUtils.getSessionFactory();
 		try {
 			TypeDTO typeDTO = ReadType.readExcel();
 			int a = typeService.saveTypeService(typeDTO);

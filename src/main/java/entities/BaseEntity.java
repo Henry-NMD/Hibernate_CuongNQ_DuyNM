@@ -18,7 +18,7 @@ public class BaseEntity {
 	private Date updateDate;
 
 	@Column(name = "active")
-	private Boolean isActive; // soft delete
+	private String isActive; // soft delete
 
 	public Date getCreatedDate() {
 		return createdDate;
@@ -36,13 +36,11 @@ public class BaseEntity {
 		this.updateDate = updateDate;
 	}
 
-	public Boolean getIsActive() {
+	public String getIsActive() {
 		return isActive;
 	}
 
-	public void setIsActive(Boolean isActive) {
-		this.isActive = isActive;
+	public void setIsActive(String isActive) {
+			this.isActive = isActive;
 	}
-	
-	
 }

@@ -1,6 +1,7 @@
 package service;
 
 import convert.ConvertType;
+import dao.TypeDao;
 import dto.TypeDTO;
 import entities.Type;
 
@@ -12,14 +13,16 @@ import javax.validation.ValidatorFactory;
 //import jakarta.validation.Validation;
 //import jakarta.validation.Validator;
 //import jakarta.validation.ValidatorFactory;
+import java.util.Date;
 import java.util.Set;
 
 public class TypeService {
     private ConvertType convertType = new ConvertType();
     private Type type = new Type();
+    private TypeDao typeDao = new TypeDao();
 
     /**
-     *  validator typeDTO and call typeDao
+     * validator typeDTO and call typeDao
      *
      * @param typeDTO
      * @return 1 if save success , otherwise 0
@@ -35,7 +38,10 @@ public class TypeService {
                 System.out.println(violation.getMessage());
             }
         } else {
-
+            Date date = new Date();
+            type.setCreatedDate(date);
+            type.setIsActive("Y");
+            statusSaveType = typeDao.save(type);
         }
         return statusSaveType;
     }
