@@ -16,6 +16,9 @@ public class ConvertType {
         type.setTypeId(typeDTO.getTypeId());
         type.setTypeName(typeDTO.getTypeName());
         type.setTypeDescription(typeDTO.getTypeDescription());
+        type.setIsActive(typeDTO.getIsActive());
+        type.setIsActive(typeDTO.getIsActive());
+        type.setUpdateDate(typeDTO.getUpdateDate());
         return type;
     }
 

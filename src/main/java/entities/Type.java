@@ -15,12 +15,10 @@ public class Type extends BaseEntity {
 	@Column(name = "type_id", unique = true)
 	private int typeId;
 
-	@NotBlank(message = "Please enter type name")
 	@Column(name = "type_name", length = 255, nullable = false)
 	private String typeName;
 
 	@Size(max = 20, min = 3, message = "{type.description.invalid}")
-	@NotBlank(message = "Please enter type description")
 	@Column(name = "type_description", length = 255, nullable = false)
 	private String typeDescription;
 

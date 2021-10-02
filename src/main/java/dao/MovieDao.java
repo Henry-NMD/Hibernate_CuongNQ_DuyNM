@@ -81,7 +81,8 @@ public class MovieDao implements Dao<Movie> {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-           // entity = (Movie)session.get(Movie.class);
+            session.update(entity);
+            tx.commit();
         }catch (HibernateException e){
             if (tx != null) {
                 tx.rollback();
@@ -102,7 +103,8 @@ public class MovieDao implements Dao<Movie> {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            session.delete(entity);
+            session.update(entity);
+            tx.commit();
         }catch (HibernateException e){
             if (tx != null) {
                 tx.rollback();

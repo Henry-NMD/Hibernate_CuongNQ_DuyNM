@@ -1,6 +1,6 @@
 package dto;
 
-public class TypeDTO {
+public class TypeDTO extends BaseEntityDTO{
     private int typeId;
     private String typeName;
     private String typeDescription;

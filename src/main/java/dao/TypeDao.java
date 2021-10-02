@@ -30,11 +30,13 @@ public class TypeDao implements Dao<Type> {
 
         try {
             tx = session.beginTransaction();
-            CriteriaBuilder builder = session.getCriteriaBuilder();
-            CriteriaQuery<Type> query = builder.createQuery(Type.class);
-            Root<Type> entityRoot = query.from(Type.class);
-            query.select(entityRoot);
-            entity =session.createQuery(query).getResultList();
+            CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+            CriteriaQuery<Type> query = criteriaBuilder.createQuery(Type.class);
+            Root<Type> root = query.from(Type.class);
+            Predicate predicate = criteriaBuilder.equal(root.get("isActive"), "Y");
+            query.select(root).where(predicate);
+            TypedQuery<Type> typedQuery = session.createQuery(query);
+            entity = typedQuery.getResultList();
             return entity;
 
         }catch (HibernateException e){
@@ -74,15 +76,15 @@ public class TypeDao implements Dao<Type> {
 
     /**
      * update one row in DB
-     * @param entity
+     * @param type
      */
     @Override
-    public void update(Type entity) {
+    public void update(Type type) {
         Session session = HibernateUtils.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            // entity = (Movie)session.get(Movie.class);
+            session.update(type);
         }catch (HibernateException e){
             if (tx != null) {
                 tx.rollback();
@@ -103,7 +105,8 @@ public class TypeDao implements Dao<Type> {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            session.delete(entity);
+            session.update(entity);
+            tx.commit();
         }catch (HibernateException e){
             if (tx != null) {
                 tx.rollback();

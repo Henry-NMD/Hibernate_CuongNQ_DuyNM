@@ -5,6 +5,7 @@ import dao.TypeDao;
 import dto.MovieDTO;
 import dto.TypeDTO;
 import entities.Type;
+import utils.Contants;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -24,7 +25,7 @@ public class TypeService {
      * @param typeDTO
      * @return 1 if save success , otherwise 0
      */
-    public int saveTypeService(TypeDTO typeDTO) throws Exception{
+    public String saveTypeService(TypeDTO typeDTO) throws Exception{
         int statusSaveType = 0;
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
@@ -40,7 +41,11 @@ public class TypeService {
             type.setIsActive("Y");
             statusSaveType = typeDao.save(type);
         }
-        return statusSaveType;
+        if (statusSaveType == 1) {
+            return Contants.SUCCESS;
+        } else {
+            return Contants.FAIL;
+        }
     }
 
 
@@ -51,7 +56,7 @@ public class TypeService {
      * @param status
      * @return status change type
      */
-    public int changeMovie(TypeDTO typeDTO , String status) {
+    public int changeType(TypeDTO typeDTO , String status) {
         int statusChange = 0;
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
