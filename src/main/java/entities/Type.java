@@ -1,6 +1,8 @@
 package entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -10,10 +12,12 @@ public class Type extends BaseEntity {
 	@Id
 	@Column(name = "type_id", unique = true)
 	private int typeId;
-	
+
+	@NotBlank(message = "Please enter type name")
 	@Column(name = "type_name", length = 255, nullable = false, unique = true)
 	private String typeName;
-	
+
+	@Size(max = 20, min = 3, message = "{type.description.invalid}")
 	@Column(name = "type_description", length = 255, nullable = false)
 	private String typeDescription;
 	
