@@ -3,8 +3,6 @@ W
 'src/main/java/convert/ConvertMovie.java,f/4/f48b009d205b010453f41e6cdc31dfdf31eff643
 Q
 !src/main/java/entities/Movie.java,5/a/5ac4d42991937112a71d9aa2a5947388ba5c7ffb
-O
-src/main/java/dto/MovieDTO.java,b/3/b33d99e7e4669373ce667a5a22803ec146f3cd49
 P
  src/main/java/file/ReadType.java,3/1/311312a7dcc9ba593446de480b874c4a9caef544
 V

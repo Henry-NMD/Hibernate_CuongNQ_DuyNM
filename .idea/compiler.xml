@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Hibernate_CuongNM_DuyNM" />
+        <module name="Hibernate_CuongNQ_DuyNM" />
       </profile>
     </annotationProcessing>
   </component>
