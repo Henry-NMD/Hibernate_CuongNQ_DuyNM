@@ -18,6 +18,7 @@ public class Type extends BaseEntity {
 	private String typeName;
 
 	@Size(max = 20, min = 3, message = "{type.description.invalid}")
+	@NotBlank(message = "Please enter type description")
 	@Column(name = "type_description", length = 255, nullable = false)
 	private String typeDescription;
 	
