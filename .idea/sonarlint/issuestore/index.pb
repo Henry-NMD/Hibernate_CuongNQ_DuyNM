@@ -9,3 +9,31 @@ W
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
 Q
 !src/main/java/entities/Movie.java,5/a/5ac4d42991937112a71d9aa2a5947388ba5c7ffb
+W
+'src/main/java/service/MovieService.java,d/4/d437d6fe6b825fe1f68da3acc3225157b628706e
+P
+ src/main/java/file/ReadType.java,3/1/311312a7dcc9ba593446de480b874c4a9caef544
+W
+'src/main/java/convert/ConvertMovie.java,f/4/f48b009d205b010453f41e6cdc31dfdf31eff643
+Q
+!src/main/java/utils/Contants.java,0/7/0753a7aebe7cc403d80d2e718d748dea737b3fdf
+T
+$src/main/java/dto/BaseEntityDTO.java,c/1/c1d480b90cb57ea9ea18b291a2c503989bda3ff9
+N
+src/main/java/dto/TypeDTO.java,7/9/799f5e2ed2344446a7dbb63736d70a3696594e77
+J
+src/main/java/dao/Dao.java,3/1/3131dc201ddbe6c0c3ea9ad83866507be958fab3
+O
+src/main/java/dto/MovieDTO.java,b/3/b33d99e7e4669373ce667a5a22803ec146f3cd49
+O
+src/main/java/dao/MovieDao.java,a/7/a758be6f989a421b30adf5a07f884923a8323bf4
+V
+&src/main/java/convert/ConvertType.java,f/8/f8887d39a399df00fdffd14e9b40653f637fc2c8
+Q
+!src/main/java/file/ReadMovie.java,f/a/fa38e26dc94c4ecd30e078bb891b4db7fc5dc844
+P
+ src/main/java/entities/Type.java,6/1/61f277f439f910b3d6082b5749e31841edcf4dab
+V
+&src/main/java/entities/BaseEntity.java,7/6/7690d977ff90f5ef38644bd25b54246fce332f80
+_
+/src/main/java/exception/DuplicateException.java,3/a/3af071f7f05ddfd08a52545ec0c0d11e6620e148
