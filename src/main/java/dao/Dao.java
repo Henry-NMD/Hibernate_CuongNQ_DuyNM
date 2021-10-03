@@ -37,7 +37,7 @@ public interface Dao<T> {
      *
      * @return
      */
-    List<T> findAll();
+    List<T> findAll(String status);
 
     /**
      * create one row in DB

@@ -13,6 +13,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -33,6 +34,14 @@ public class TypeService {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         type = convertType.convertToModel(typeDTO);
+        List<TypeDTO> dtoList = getAllType("check");
+        if (!dtoList.isEmpty() || dtoList != null) {
+            for (TypeDTO dto : dtoList) {
+                if (typeDTO.getTypeId() == dto.getTypeId()) {
+                    throw new DuplicateException("duplicate type id: " + typeDTO.getTypeId());
+                }
+            }
+        }
         Set<ConstraintViolation<Type>> constraintViolations = validator.validate(type);
         if (constraintViolations.size() > 0) {
             for (ConstraintViolation<Type> violation : constraintViolations) {
@@ -60,7 +69,7 @@ public class TypeService {
      * @param status
      * @return status change type
      */
-    public int changeType(TypeDTO typeDTO, String status) {
+    public int changeType(TypeDTO typeDTO, String status) throws Exception {
         int statusChange = 0;
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
@@ -80,20 +89,22 @@ public class TypeService {
         return statusChange;
     }
 
-
     /**
-     * check duplicate type object
+     * get all type and convert to typeDTO
      *
-     * @param id
-     * @return 1 if duplicate id
-     * @throws NotFoundException
+     * @param status
+     * @return list typeDTO
      */
-    private int checkDuplicate(int id) throws NotFoundException {
-        Type type = typeDao.findOne(id);
-        if (type == null) {
-            return 0;
-        } else {
-            return 1;
+    public List<TypeDTO> getAllType(String status) {
+        TypeDTO typeDTO;
+        List<TypeDTO> typeDTOList = new ArrayList<>();
+        List<Type> listType = typeDao.findAll(status);
+        for (Type type : listType) {
+            typeDTO = new TypeDTO();
+            typeDTO = convertType.convertToDTO(type);
+            typeDTOList.add(typeDTO);
         }
+        return typeDTOList;
     }
 }
+

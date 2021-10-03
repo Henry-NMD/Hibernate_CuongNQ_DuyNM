@@ -28,4 +28,13 @@ public class TypeDTO extends BaseEntityDTO{
     public void setTypeDescription(String typeDescription) {
         this.typeDescription = typeDescription;
     }
+
+    @Override
+    public String toString() {
+        return "TypeDTO{" +
+                "typeId=" + typeId +
+                ", typeName='" + typeName + '\'' +
+                ", typeDescription='" + typeDescription + '\'' +
+                '}';
+    }
 }

@@ -21,7 +21,7 @@ public class MovieDao implements Dao<Movie> {
      * @return movie
      */
     @Override
-    public List<Movie> findAll() {
+    public List<Movie> findAll(String status) {
 
         Session session = HibernateUtils.getSessionFactory().openSession();
         Transaction tx = null;

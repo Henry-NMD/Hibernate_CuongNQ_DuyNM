@@ -1,12 +1,14 @@
 package main;
 
 import dto.TypeDTO;
+import entities.Type;
 import file.ReadType;
 import service.TypeService;
 import utils.HibernateUtils;
 import utils.Contants;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class MainApplication {
@@ -60,6 +62,18 @@ public class MainApplication {
                     }
                     break;
                 }
+                case Contants.FIND_ALL_TYPE: {
+                    String status = "getAll";
+                    List<TypeDTO> typeDTOS = typeService.getAllType(status);
+                    if (typeDTOS.isEmpty() || typeDTOS == null) {
+                        System.out.println("null");
+                    } else {
+                        typeDTOS.stream().forEach((TypeDTO type) -> {
+                            System.out.println(type.toString());
+                        });
+                    }
+                    break;
+                }
                 default:
                     System.out.println("what do you means? " + chose);
             }
@@ -73,9 +87,10 @@ public class MainApplication {
         System.out.println("1. save a type");
         System.out.println("2. update a type");
         System.out.println("3. delete a type");
-        System.out.println("4. find all type");
         System.out.println("4. save a movie");
         System.out.println("5. save a type_movie");
+        System.out.println("6. get all type");
+
         System.out.println("your choose:");
 
     }

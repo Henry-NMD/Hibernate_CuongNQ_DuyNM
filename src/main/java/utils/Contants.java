@@ -8,5 +8,7 @@ public class Contants {
     public static final String DELETE_TYPE = "3";
     public static final String SAVE_MOVIE = "4";
     public static final String SAVE_TYPE_MOVIE = "5";
+    public static final String FIND_ALL_TYPE = "6";
+
 
 }

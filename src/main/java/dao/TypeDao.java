@@ -19,32 +19,37 @@ public class TypeDao implements Dao<Type> {
 
     /**
      * Find all from type_table
+     *
      * @return entity
      */
     @Override
-    public List<Type> findAll() {
+    public List<Type> findAll(String status) {
 
         Session session = HibernateUtils.getSessionFactory().openSession();
         Transaction tx = null;
-        List<Type> entity =new ArrayList<Type>();
-
+        List<Type> entity = new ArrayList<Type>();
+        Predicate predicate = null;
         try {
             tx = session.beginTransaction();
             CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
             CriteriaQuery<Type> query = criteriaBuilder.createQuery(Type.class);
             Root<Type> root = query.from(Type.class);
-            Predicate predicate = criteriaBuilder.equal(root.get("isActive"), "Y");
-            query.select(root).where(predicate);
+            if ("getAll".equals(status)) {
+                predicate = criteriaBuilder.equal(root.get("isActive"), "Y");
+                query.select(root).where(predicate);
+            } else {
+                query.select(root);
+            }
             TypedQuery<Type> typedQuery = session.createQuery(query);
             entity = typedQuery.getResultList();
             return entity;
 
-        }catch (HibernateException e){
+        } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
             }
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
         return entity;
@@ -52,6 +57,7 @@ public class TypeDao implements Dao<Type> {
 
     /**
      * create one row in DB
+     *
      * @param entity
      * @return entity
      */
@@ -63,12 +69,12 @@ public class TypeDao implements Dao<Type> {
         try {
             tx = session.beginTransaction();
             session.save(entity);
-        }catch (HibernateException e){
+        } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
             }
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
         return entity;
@@ -76,6 +82,7 @@ public class TypeDao implements Dao<Type> {
 
     /**
      * update one row in DB
+     *
      * @param type
      */
     @Override
@@ -85,18 +92,19 @@ public class TypeDao implements Dao<Type> {
         try {
             tx = session.beginTransaction();
             session.update(type);
-        }catch (HibernateException e){
+        } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
             }
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
     }
 
     /**
      * delete one row in DB
+     *
      * @param entity
      */
     @Override
@@ -107,18 +115,19 @@ public class TypeDao implements Dao<Type> {
             tx = session.beginTransaction();
             session.update(entity);
             tx.commit();
-        }catch (HibernateException e){
+        } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
             }
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
     }
 
     /**
      * Find with ID
+     *
      * @param id
      * @return entity
      * @throws NotFoundException
@@ -136,12 +145,12 @@ public class TypeDao implements Dao<Type> {
             query.select(root).where(predicate);
             TypedQuery<Type> typedQuery = session.createQuery(query);
             entity = typedQuery.getSingleResult();
-        }catch (HibernateException e) {
+        } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
             }
             e.printStackTrace();
-        }finally {
+        } finally {
             session.close();
         }
         return entity;
