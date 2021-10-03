@@ -6,7 +6,7 @@ import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
 @Embeddable
-public class MoveTypeId implements Serializable {
+public class MovieTypeId implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

@@ -21,7 +21,7 @@ public class Type extends BaseEntity {
 	@Column(name = "type_description", length = 255, nullable = false)
 	private String typeDescription;
 
-	@OneToMany(mappedBy = "primaryKey.type")
+	@OneToMany(mappedBy = "primaryKey.type", fetch = FetchType.EAGER)
 	private List<MovieType> mtMovieTypes;
 	
 	public Type() {
@@ -66,5 +66,6 @@ public class Type extends BaseEntity {
 	public void setMtMovieTypes(List<MovieType> mtMovieTypes) {
 		this.mtMovieTypes = mtMovieTypes;
 	}
+
 
 }

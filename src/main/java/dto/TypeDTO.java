@@ -1,9 +1,12 @@
 package dto;
 
+import java.util.List;
+
 public class TypeDTO extends BaseEntityDTO{
     private int typeId;
     private String typeName;
     private String typeDescription;
+    private List<MovieTypeDTO> movieTypeDTOS;
 
     public int getTypeId() {
         return typeId;
@@ -29,12 +32,21 @@ public class TypeDTO extends BaseEntityDTO{
         this.typeDescription = typeDescription;
     }
 
+    public List<MovieTypeDTO> getMovieTypeDTOS() {
+        return movieTypeDTOS;
+    }
+
+    public void setMovieTypeDTOS(List<MovieTypeDTO> movieTypeDTOS) {
+        this.movieTypeDTOS = movieTypeDTOS;
+    }
+
     @Override
     public String toString() {
         return "TypeDTO{" +
                 "typeId=" + typeId +
                 ", typeName='" + typeName + '\'' +
                 ", typeDescription='" + typeDescription + '\'' +
+                ", movieTypeDTOS=" + movieTypeDTOS +
                 '}';
     }
 }

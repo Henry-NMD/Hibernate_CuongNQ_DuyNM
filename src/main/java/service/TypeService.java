@@ -54,7 +54,7 @@ public class TypeService {
             statusSaveType = typeDao.save(type);
         }
 
-        if (statusSaveType == 1) {
+        if (statusSaveType == 0) {
             return Contants.SUCCESS;
         } else {
             return Contants.FAIL;

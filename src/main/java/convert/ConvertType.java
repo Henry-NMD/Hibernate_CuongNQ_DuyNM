@@ -9,7 +9,7 @@ public class ConvertType {
      * convert from typeDTO  to type
      *
      * @param typeDTO
-     * @return
+     * @return type
      */
     public Type convertToModel(TypeDTO typeDTO) {
         Type type = new Type();
@@ -17,8 +17,6 @@ public class ConvertType {
         type.setTypeName(typeDTO.getTypeName());
         type.setTypeDescription(typeDTO.getTypeDescription());
         type.setIsActive(typeDTO.getIsActive());
-        type.setIsActive(typeDTO.getIsActive());
-        type.setUpdateDate(typeDTO.getUpdateDate());
         return type;
     }
 
@@ -27,7 +25,7 @@ public class ConvertType {
      * convert from type to typeDTO
      *
      * @param type
-     * @return
+     * @return typeDTO
      */
     public TypeDTO convertToDTO(Type type) {
         TypeDTO typeDTO = new TypeDTO();

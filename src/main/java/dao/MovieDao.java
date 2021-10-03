@@ -16,6 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MovieDao implements Dao<Movie> {
+
+    @Override
+    public int save(Movie movie) {
+        return Dao.super.save(movie);
+    }
+
     /**
      * Find all from movie_table
      * @return movie

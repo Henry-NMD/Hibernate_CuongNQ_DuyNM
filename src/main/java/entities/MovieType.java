@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class MovieType{
 
 	@EmbeddedId
-	private MoveTypeId primaryKey =  new MoveTypeId();
+	private MovieTypeId primaryKey =  new MovieTypeId();
 
 	@Column(name = "mt_description", length = 255, nullable = false)
 	private String mtDescription;
@@ -19,16 +19,16 @@ public class MovieType{
 		super();
 	}
 
-	public MovieType(MoveTypeId primaryKey, String mtDescription) {
+	public MovieType(MovieTypeId primaryKey, String mtDescription) {
 		this.primaryKey = primaryKey;
 		this.mtDescription = mtDescription;
 	}
 
-	public MoveTypeId getPrimaryKey() {
+	public MovieTypeId getPrimaryKey() {
 		return primaryKey;
 	}
 
-	public void setPrimaryKey(MoveTypeId primaryKey) {
+	public void setPrimaryKey(MovieTypeId primaryKey) {
 		this.primaryKey = primaryKey;
 	}
 
