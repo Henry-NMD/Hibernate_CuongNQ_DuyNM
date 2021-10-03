@@ -42,6 +42,7 @@ public class MainApplication {
                         Date updateDate = new Date();
                         typeDTO = ReadType.readExcel();
                         typeDTO.setUpdateDate(updateDate);
+                        typeDTO.setIsActive("Y");
                         typeService.changeType(typeDTO, update);
                     } catch (Exception e) {
                         System.out.println(e.getMessage());

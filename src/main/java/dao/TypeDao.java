@@ -92,6 +92,7 @@ public class TypeDao implements Dao<Type> {
         try {
             tx = session.beginTransaction();
             session.update(type);
+            tx.commit();
         } catch (HibernateException e) {
             if (tx != null) {
                 tx.rollback();
