@@ -60,7 +60,7 @@ public class ReadMovie {
                 int columnIndex = cell.getColumnIndex();
                 switch (columnIndex) {
                     case COLUMN_INDEX_MOVIE_ID:
-                        movieDTO.setMovieId(String.valueOf(getCellValue(cell)));
+                        movieDTO.setMovieId(new BigDecimal((double) cellValue).intValue());
                         break;
                     case COLUMN_INDEX_ACTOR:
                         movieDTO.setActor(String.valueOf(getCellValue(cell)));
@@ -77,7 +77,6 @@ public class ReadMovie {
                     case COLUMN_INDEX_FROM_DATE:
                         Date javaDate= DateUtil.getJavaDate((double) getCellValue(cell));
                         movieDTO.setFromDate(javaDate);
-                        System.out.println(getCellValue(cell));
                         break;
                     case COLUMN_INDEX_TO_DATE:
                         Date javaDate1= DateUtil.getJavaDate((double) getCellValue(cell));

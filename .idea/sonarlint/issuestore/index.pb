@@ -3,13 +3,47 @@ W
 'src/main/java/utils/HibernateUtils.java,6/d/6de5bd72040f187cad2f7e80891d3f2ccf5adbc5
 7
 pom.xml,4/4/442292b8a7efeabbe4cc176709b833b1792140ec
-Q
-!src/main/java/entities/Movie.java,5/a/5ac4d42991937112a71d9aa2a5947388ba5c7ffb
-O
-src/main/java/dto/MovieDTO.java,b/3/b33d99e7e4669373ce667a5a22803ec146f3cd49
-Q
-!src/main/java/file/ReadMovie.java,f/a/fa38e26dc94c4ecd30e078bb891b4db7fc5dc844
+R
+"src/main/java/utils/Validator.java,a/a/aab608155111026f41f35924cb4892afe0e8a219
+T
+$src/main/java/dto/BaseEntityDTO.java,c/1/c1d480b90cb57ea9ea18b291a2c503989bda3ff9
+N
+src/main/java/dao/TypeDao.java,3/6/3675019cb2ca21f0607e1afe9702d643246896a9
+N
+src/main/java/dto/TypeDTO.java,7/9/799f5e2ed2344446a7dbb63736d70a3696594e77
 V
-&src/main/java/entities/BaseEntity.java,7/6/7690d977ff90f5ef38644bd25b54246fce332f80
+&src/main/java/convert/ConvertType.java,f/8/f8887d39a399df00fdffd14e9b40653f637fc2c8
 _
 /src/main/java/exception/DuplicateException.java,3/a/3af071f7f05ddfd08a52545ec0c0d11e6620e148
+T
+$src/main/java/exception/IdExits.java,2/b/2ba407e85c58c35203d2b77ecf567541231d59a2
+P
+ src/main/java/entities/Type.java,6/1/61f277f439f910b3d6082b5749e31841edcf4dab
+Q
+!src/main/java/utils/Contants.java,0/7/0753a7aebe7cc403d80d2e718d748dea737b3fdf
+V
+&src/main/java/entities/BaseEntity.java,7/6/7690d977ff90f5ef38644bd25b54246fce332f80
+W
+'src/main/java/convert/ConvertMovie.java,f/4/f48b009d205b010453f41e6cdc31dfdf31eff643
+J
+src/main/java/dao/Dao.java,3/1/3131dc201ddbe6c0c3ea9ad83866507be958fab3
+W
+'src/main/java/service/MovieService.java,d/4/d437d6fe6b825fe1f68da3acc3225157b628706e
+Q
+!src/main/java/file/ReadMovie.java,f/a/fa38e26dc94c4ecd30e078bb891b4db7fc5dc844
+S
+#src/main/java/dto/MovieTypeDTO.java,8/e/8ebf1f1e8252def55c94dfccdd91332cb10799f1
+O
+src/main/java/dao/MovieDao.java,a/7/a758be6f989a421b30adf5a07f884923a8323bf4
+O
+src/main/java/dto/MovieDTO.java,b/3/b33d99e7e4669373ce667a5a22803ec146f3cd49
+[
++src/main/java/convert/ConvertTypeMovie.java,c/a/ca16831b5d5d7d479d667ebb93fe99e62eb1f87a
+U
+%src/main/java/entities/MovieType.java,2/b/2be1e211a76db64ed59f4b1c521597c525623d7f
+P
+ src/main/java/file/ReadType.java,3/1/311312a7dcc9ba593446de480b874c4a9caef544
+V
+&src/main/java/service/TypeService.java,d/7/d757dc94fd9b82d614879868ba1f18790260d42d
+Q
+!src/main/java/entities/Movie.java,5/a/5ac4d42991937112a71d9aa2a5947388ba5c7ffb

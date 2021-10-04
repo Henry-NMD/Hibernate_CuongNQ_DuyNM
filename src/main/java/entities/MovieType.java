@@ -50,5 +50,11 @@ public class MovieType{
 		getPrimaryKey().setType(type);
 	}
 
+	public String getMtDescription() {
+		return mtDescription;
+	}
 
+	public void setMtDescription(String mtDescription) {
+		this.mtDescription = mtDescription;
+	}
 }

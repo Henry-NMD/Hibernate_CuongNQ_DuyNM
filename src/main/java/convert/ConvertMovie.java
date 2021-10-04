@@ -3,8 +3,6 @@ package convert;
 import dto.MovieDTO;
 import entities.Movie;
 
-import java.sql.Date;
-
 public class ConvertMovie {
 
     /**
@@ -22,8 +20,8 @@ public class ConvertMovie {
         movie.setDirector(movieDTO.getDirector());
         movie.setDuration(movieDTO.getDuration());
         movie.setMovieProductionCompany(movieDTO.getMovieProductionCompany());
-        movie.setFromDate((Date) movieDTO.getFromDate());
-        movie.setToDate((Date) movieDTO.getToDate());
+        movie.setFromDate(movieDTO.getFromDate());
+        movie.setToDate(movieDTO.getToDate());
         movie.setVersion(movieDTO.getVersion());
         movie.setMovieNameEn(movieDTO.getMovieNameEn());
         movie.setMovieNameVn(movieDTO.getMovieNameVn());

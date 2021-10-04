@@ -4,11 +4,7 @@ package dto;
 import java.util.Date;
 
 public class MovieDTO extends BaseEntityDTO{
-
-    /**
-     *
-     */
-    private String movieId;
+    private int movieId;
 
     private String actor;
 
@@ -34,11 +30,11 @@ public class MovieDTO extends BaseEntityDTO{
 
     private String smallImage;
 
-    public String getMovieId() {
+    public int getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(String movieId) {
+    public void setMovieId(int movieId) {
         this.movieId = movieId;
     }
 

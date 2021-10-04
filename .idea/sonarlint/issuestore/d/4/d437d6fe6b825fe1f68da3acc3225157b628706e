@@ -1,0 +1,24 @@
+
+i
+java:S1450"TRemove the "movie" field and declare it as a local variable in the relevant methods.(ò±å<
+_
+java:S1854#"=Remove this useless assignment to local variable "validator".(õ‡§Âÿÿÿÿÿ8Þ½ÅÅÄ/
+P
+java:S1481#".Remove this unused "validator" local variable.(õ‡§Âÿÿÿÿÿ8á½ÅÅÄ/
+V	java:S125'"<This block of commented-out lines of code should be removed.(°àÞµÿÿÿÿÿ
+R
+java:S1854L"<Remove this useless assignment to local variable "movieDTO".(ë¡÷ª
+O
+java:S1117K"9Rename "movie" which hides the field declared at line 22.(»íáð
+J
+java:S1128"(Remove this unused import 'dto.TypeDTO'.(é¢½œùÿÿÿÿ8µšùªÄ/
+G
+java:S1128"*Remove this unused import 'entities.Type'.(çóÕÏ8µšùªÄ/
+[
+java:S1128	"9Remove this unused import 'exception.DuplicateException'.(ÀžÖÊøÿÿÿÿ8µšùªÄ/
+c
+java:S1128"ARemove this unused import 'javax.validation.ConstraintViolation'.(›•¾ƒýÿÿÿÿ8æ½ÅÅÄ/
+H
+java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8æ½ÅÅÄ/
+L
+java:S1128"*Remove this unused import 'java.util.Set'.(ö²„¤þÿÿÿÿ8ç½ÅÅÄ/

@@ -66,6 +66,7 @@ public class MovieDao implements Dao<Movie> {
         try {
             tx = session.beginTransaction();
             session.save(entity);
+            tx.commit();
         }catch (HibernateException e){
             if (tx != null) {
                 tx.rollback();
@@ -154,5 +155,24 @@ public class MovieDao implements Dao<Movie> {
             session.close();
         }
         return entity;
+    }
+
+    public int add(Movie entity) {
+        int status = 0;
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+           status = (int) session.save(entity);
+            tx.commit();
+        }catch (HibernateException e){
+            if (tx != null) {
+                tx.rollback();
+            }
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+        return status;
     }
 }

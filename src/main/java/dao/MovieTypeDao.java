@@ -1,5 +1,6 @@
 package dao;
 
+import entities.Movie;
 import entities.MovieType;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -14,7 +15,18 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MovieTypeDao {
+public class MovieTypeDao implements Dao<MovieType>{
+
+    /**
+     * override save method super class
+     *
+     * @param movieType
+     * @return
+     */
+    @Override
+    public int save(MovieType movieType) {
+        return Dao.super.save(movieType);
+    }
 
     /**
      * Find all from movie_type_table
@@ -53,28 +65,44 @@ public class MovieTypeDao {
         return entity;
     }
 
+    @Override
+    public MovieType create(MovieType entity) {
+        return null;
+    }
+
+    @Override
+    public void update(MovieType entity) {
+
+    }
+
+    @Override
+    public void delete(MovieType entity) {
+
+    }
+
     /**
      * Save movie_type_table
      *
      * @param entity
      * @return entity
      */
-    public MovieType save(MovieType entity) {
-
+    public int add(MovieType entity) {
+        int status = 0;
         Session session = HibernateUtils.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            session.save(entity);
+            status = (Integer) session.save(entity);
             tx.commit();
-        } catch (HibernateException e) {
+        }catch (HibernateException e){
             if (tx != null) {
                 tx.rollback();
             }
             e.printStackTrace();
-        } finally {
+        }finally {
             session.close();
         }
-        return entity;
+        return status;
     }
+
 }

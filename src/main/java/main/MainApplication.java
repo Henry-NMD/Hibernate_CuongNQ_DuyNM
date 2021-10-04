@@ -1,10 +1,14 @@
 package main;
 
+import dto.MovieDTO;
+import dto.MovieTypeDTO;
 import dto.TypeDTO;
-import entities.Type;
+import file.ReadMovie;
+import file.ReadMovieType;
 import file.ReadType;
+import service.MovieService;
+import service.MovieTypeService;
 import service.TypeService;
-import utils.HibernateUtils;
 import utils.Contants;
 
 import java.util.Date;
@@ -17,6 +21,8 @@ public class MainApplication {
     public static void main(String[] args) {
         TypeDTO typeDTO = new TypeDTO();
         TypeService typeService = new TypeService();
+        MovieService movieService = new MovieService();
+        MovieTypeService movieTypeService = new MovieTypeService();
         String chose = null;
         menu();
         while (true) {
@@ -72,6 +78,29 @@ public class MainApplication {
                         typeDTOS.stream().forEach((TypeDTO type) -> {
                             System.out.println(type.toString());
                         });
+                    }
+                    break;
+                }
+                case Contants.SAVE_MOVIE: {
+                    String statusSave;
+                    try {
+                        MovieDTO movieDTO = ReadMovie.readExcel();
+                        statusSave = movieService.saveMovieService(movieDTO);
+                        System.out.println(statusSave);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    break;
+                }
+                case Contants.SAVE_TYPE_MOVIE: {
+                    String statusSave;
+                    try {
+                        MovieTypeDTO movieTypeDTO = ReadMovieType.readExcel();
+                        statusSave = movieTypeService.saveMovieService(movieTypeDTO);
+                        System.out.println(statusSave);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                     break;
                 }

@@ -1,7 +1,7 @@
 package entities;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -9,43 +9,45 @@ import java.util.List;
 public class Movie extends BaseEntity {
 
 	@Id
-	@Column(name = "movie_id", length = 10, unique = true)
-	private String movieId;
+	@Column(name = "movie_id")
+	private int movieId;
 	
-	@Column(name = "actor", length = 255, nullable = false)
+	@Column(name = "actor")
 	private String actor;
 	
-	@Column(name = "content", length = 1000, nullable = false)
+	@Column(name = "content")
 	private String content;
 	
-	@Column(name = "director", length = 255, nullable = false)
+	@Column(name = "director")
 	private String director;
-	
-	@Column(name = "duration", nullable = false)
-	private double duration;
-	
-	@Column(name = "from_date", nullable = false)
+
+	@Column(name = "duration")
+	private Double duration;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "from_date")
 	private Date fromDate;
-	
-	@Column(name = "to_date", nullable = false)
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "to_date")
 	private Date toDate;
 	
-	@Column(name = "movie_production_company", length = 255, nullable = false)
+	@Column(name = "movie_production_company")
 	private String movieProductionCompany;
 	
-	@Column(name = "version", length = 255, nullable = false)
+	@Column(name = "version")
 	private String version;
 	
-	@Column(name = "movie_name_en", length = 255, nullable = false, unique = true)
+	@Column(name = "movie_name_en")
 	private String movieNameEn;
 	
-	@Column(name = "movie_name_vn", length = 255, nullable = false, unique = true)
+	@Column(name = "movie_name_vn")
 	private String movieNameVn;
 	
-	@Column(name = "large_image", length = 255, nullable = false)
+	@Column(name = "large_image")
 	private String largeImage;
 	
-	@Column(name = "small_image", length = 255, nullable = false)
+	@Column(name = "small_image")
 	private String smallImage;
 	
 	@OneToMany(mappedBy = "primaryKey.movie")
@@ -55,7 +57,7 @@ public class Movie extends BaseEntity {
 		
 	}
 
-	public Movie(String movieId, String actor, String content, String director, double duration, Date fromDate,
+	public Movie(int movieId, String actor, String content, String director, double duration, Date fromDate,
 			Date toDate, String movieProductionCompany, String version, String movieNameEn, String movieNameVn,
 			String largeImage, String smallImage) {
 		super();
@@ -74,11 +76,11 @@ public class Movie extends BaseEntity {
 		this.smallImage = smallImage;
 	}
 
-	public String getMovieId() {
+	public int getMovieId() {
 		return movieId;
 	}
 
-	public void setMovieId(String movieId) {
+	public void setMovieId(int movieId) {
 		this.movieId = movieId;
 	}
 
@@ -106,11 +108,11 @@ public class Movie extends BaseEntity {
 		this.director = director;
 	}
 
-	public double getDuration() {
+	public Double getDuration() {
 		return duration;
 	}
 
-	public void setDuration(double duration) {
+	public void setDuration(Double duration) {
 		this.duration = duration;
 	}
 
