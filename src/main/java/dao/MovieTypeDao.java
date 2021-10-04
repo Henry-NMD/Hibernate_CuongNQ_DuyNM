@@ -92,7 +92,7 @@ public class MovieTypeDao implements Dao<MovieType>{
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            status = (Integer) session.save(entity);
+            session.save(entity);
             tx.commit();
         }catch (HibernateException e){
             if (tx != null) {

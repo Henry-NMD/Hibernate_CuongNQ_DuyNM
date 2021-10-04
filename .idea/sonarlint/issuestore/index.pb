@@ -34,8 +34,6 @@ Q
 S
 #src/main/java/dto/MovieTypeDTO.java,8/e/8ebf1f1e8252def55c94dfccdd91332cb10799f1
 O
-src/main/java/dao/MovieDao.java,a/7/a758be6f989a421b30adf5a07f884923a8323bf4
-O
 src/main/java/dto/MovieDTO.java,b/3/b33d99e7e4669373ce667a5a22803ec146f3cd49
 [
 +src/main/java/convert/ConvertTypeMovie.java,c/a/ca16831b5d5d7d479d667ebb93fe99e62eb1f87a
