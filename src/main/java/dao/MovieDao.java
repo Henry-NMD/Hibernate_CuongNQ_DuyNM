@@ -17,6 +17,12 @@ import java.util.List;
 
 public class MovieDao implements Dao<Movie> {
 
+    /**
+     * override save
+     *
+     * @param movie
+     * @return
+     */
     @Override
     public int save(Movie movie) {
         return Dao.super.save(movie);
@@ -141,9 +147,6 @@ public class MovieDao implements Dao<Movie> {
             query.select(entityRoot).where(cond);
             TypedQuery<Movie> typedQuery = session.createQuery(query);
             List<Movie> entities = typedQuery.getResultList();
-            if (entities == null || entities.isEmpty()) {
-                throw new NotFoundException("Entity not found");
-            }
             entity = entities.get(0);
             return entity;
         }catch (HibernateException e) {
@@ -157,6 +160,13 @@ public class MovieDao implements Dao<Movie> {
         return entity;
     }
 
+
+    /**
+     *  add a movie to DB
+     *
+     * @param entity
+     * @return
+     */
     public int add(Movie entity) {
         int status = 0;
         Session session = HibernateUtils.getSessionFactory().openSession();
